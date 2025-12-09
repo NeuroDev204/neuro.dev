@@ -32,10 +32,7 @@ export const translations = {
             description2:
                 "Trong quá trình học tập và thực tập, tôi đã có 3 tháng kinh nghiệm làm Java Backend Intern và 3 tháng làm Software Engineer Intern. Tôi có kinh nghiệm làm việc với các công nghệ như Spring Boot, Microservices, MySQL, MongoDB và nhiều công cụ phát triển khác.",
             highlights: {
-                fastLearner: {
-                    title: "Học hỏi nhanh",
-                    description: "Tiếp thu kiến thức mới một cách nhanh chóng và hiệu quả",
-                },
+
                 teamwork: {
                     title: "Làm việc nhóm",
                     description: "Khả năng phối hợp và giao tiếp hiệu quả trong nhóm",
@@ -47,6 +44,10 @@ export const translations = {
                 backend: {
                     title: "Kiến trúc Backend",
                     description: "Thiết kế và xây dựng hệ thống backend có khả năng mở rộng",
+                },
+                english: {
+                    title: "Tiếng Anh",
+                    description: "Giao tiếp thành thạo và đọc hiểu tài liệu chuyên ngành",
                 },
             },
         },
@@ -199,10 +200,7 @@ export const translations = {
             description2:
                 "During my studies and internships, I have gained 3 months of experience as a Java Backend Intern and 3 months as a Software Engineer Intern. I have experience working with technologies such as Spring Boot, Microservices, MySQL, MongoDB, and many other development tools.",
             highlights: {
-                fastLearner: {
-                    title: "Fast Learner",
-                    description: "Quickly and efficiently absorbing new knowledge",
-                },
+
                 teamwork: {
                     title: "Teamwork",
                     description: "Ability to collaborate and communicate effectively in a team",
@@ -214,6 +212,10 @@ export const translations = {
                 backend: {
                     title: "Backend Architecture",
                     description: "Designing and building scalable backend systems",
+                },
+                english: {
+                    title: "English",
+                    description: "Proficient communication and technical documentation reading",
                 },
             },
         },
