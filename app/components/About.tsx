@@ -85,7 +85,7 @@ export default function About() {
                             <div className="aspect-[4/5] rounded-2xl overflow-hidden relative">
                                 {/* Profile Photo */}
                                 <Image
-                                    src="/profile.jpg"
+                                    src="/profile.webp"
                                     alt="Phạm Văn Sỹ - Neuro.Dev"
                                     fill
                                     className="object-cover"

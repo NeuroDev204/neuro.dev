@@ -49,7 +49,7 @@ export default function Hero() {
                             <div className="w-40 h-40 md:w-52 md:h-52 rounded-full glass overflow-hidden relative">
                                 {/* Profile Image */}
                                 <Image
-                                    src="/profile.jpg"
+                                    src="/profile.webp"
                                     alt="Phạm Văn Sỹ - Neuro.Dev"
                                     fill
                                     className="object-cover"
