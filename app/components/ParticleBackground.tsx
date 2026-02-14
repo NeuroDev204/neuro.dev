@@ -106,18 +106,15 @@ export default function ParticleBackground() {
                 // Update position
                 particle.x += particle.speedX;
                 particle.y += particle.speedY;
-
                 // Mouse interaction
                 const dx = mouseRef.current.x - particle.x;
                 const dy = mouseRef.current.y - particle.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
-
                 if (distance < 150) {
                     const force = (150 - distance) / 150;
                     particle.x -= dx * force * 0.02;
                     particle.y -= dy * force * 0.02;
                 }
-
                 // Wrap around edges
                 if (particle.x < 0) particle.x = canvas.width;
                 if (particle.x > canvas.width) particle.x = 0;
@@ -169,7 +166,6 @@ export default function ParticleBackground() {
                 <div className="glow-orb glow-orb-2"></div>
                 <div className="glow-orb glow-orb-3"></div>
             </div>
-
             {/* Particle Canvas */}
             <canvas
                 ref={canvasRef}

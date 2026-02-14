@@ -8,14 +8,14 @@ export default function Footer() {
 
     return (
         <footer className="relative py-12 px-6">
-            {/* Gradient Line */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 max-w-2xl h-px bg-gradient-to-r from-transparent via-[var(--primary-blue)] to-transparent"></div>
+            {/* Divider Line */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 max-w-2xl h-px bg-[var(--glass-border)]"></div>
 
             <div className="container max-w-6xl mx-auto">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                     {/* Logo & Copyright */}
                     <div className="text-center md:text-left">
-                        <a href="#hero" className="text-2xl font-bold text-gradient inline-block mb-2">
+                        <a href="#hero" className="text-2xl font-bold text-[var(--primary-blue)] inline-block mb-2">
                             Neuro.Dev
                         </a>
                         <p className="text-[var(--text-muted)] text-sm">
@@ -63,9 +63,6 @@ export default function Footer() {
                     </a>
                 </div>
             </div>
-
-            {/* Background Glow */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-32 bg-[var(--glow-purple)] rounded-full blur-[100px] opacity-20 pointer-events-none"></div>
         </footer>
     );
 }

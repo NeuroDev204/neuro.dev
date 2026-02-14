@@ -33,7 +33,7 @@ export default function Navigation() {
     return (
         <nav
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-                    ? "py-3 bg-[rgba(10,10,26,0.8)] backdrop-blur-xl border-b border-[rgba(255,255,255,0.1)]"
+                    ? "py-3 bg-[rgba(11,21,36,0.78)] backdrop-blur-md border-b border-[var(--glass-border)]"
                     : "py-5 bg-transparent"
                 }`}
         >
@@ -41,7 +41,7 @@ export default function Navigation() {
                 {/* Logo */}
                 <a
                     href="#hero"
-                    className="text-2xl font-bold text-gradient"
+                    className="text-2xl font-bold text-[var(--primary-blue)]"
                     onClick={handleLinkClick}
                 >
                     Neuro.Dev
@@ -56,7 +56,7 @@ export default function Navigation() {
                             className="text-[var(--text-secondary)] hover:text-white transition-colors duration-300 text-sm font-medium relative group"
                         >
                             {link.name}
-                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[var(--primary-blue)] to-[var(--secondary-purple)] group-hover:w-full transition-all duration-300"></span>
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[var(--primary-blue)] group-hover:w-full transition-all duration-300"></span>
                         </a>
                     ))}
                 </div>

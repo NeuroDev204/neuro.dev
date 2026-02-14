@@ -74,7 +74,7 @@ export default function About() {
                     <p className="text-[var(--primary-cyan)] text-sm font-medium tracking-wider uppercase mb-3">
                         {t.about.subtitle}
                     </p>
-                    <h2 className="heading-lg text-gradient">{t.about.title}</h2>
+                    <h2 className="heading-lg text-[var(--primary-blue)]">{t.about.title}</h2>
                 </div>
 
                 {/* Content Grid */}
@@ -92,20 +92,19 @@ export default function About() {
                                     className="object-cover"
                                 />
 
-                                {/* Overlay Gradient */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-dark)]/50 to-transparent"></div>
+                                <div className="absolute inset-0 bg-[rgba(7,16,28,0.25)]"></div>
                             </div>
 
                             {/* Decorative Elements */}
                             <div className="absolute -top-4 -right-4 w-24 h-24 border-2 border-[var(--primary-cyan)]/30 rounded-2xl"></div>
-                            <div className="absolute -bottom-4 -left-4 w-32 h-32 border-2 border-[var(--secondary-purple)]/30 rounded-2xl"></div>
+                            <div className="absolute -bottom-4 -left-4 w-32 h-32 border-2 border-[var(--primary-blue)]/30 rounded-2xl"></div>
                         </div>
                     </div>
 
                     {/* Right - Text Content */}
                     <div className="animate-on-scroll opacity-0 delay-200">
                         <h3 className="heading-md mb-6">
-                            {t.about.greeting} <span className="text-gradient">Neuro.Dev</span>
+                            {t.about.greeting} <span className="text-[var(--primary-blue)]">Neuro.Dev</span>
                         </h3>
                         <p className="text-body mb-6">
                             {t.about.description1}
@@ -121,7 +120,7 @@ export default function About() {
                                     key={index}
                                     className="glass-card p-4 flex items-start gap-4 group"
                                 >
-                                    <div className="w-12 h-12 rounded-xl glass flex items-center justify-center text-[var(--primary-cyan)] group-hover:text-[var(--secondary-lavender)] transition-colors flex-shrink-0">
+                                    <div className="w-12 h-12 rounded-xl glass flex items-center justify-center text-[var(--primary-cyan)] group-hover:text-[var(--primary-blue)] transition-colors flex-shrink-0">
                                         {item.icon}
                                     </div>
                                     <div>

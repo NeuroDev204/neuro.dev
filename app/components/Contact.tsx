@@ -117,7 +117,7 @@ export default function Contact() {
                     <p className="text-[var(--primary-cyan)] text-sm font-medium tracking-wider uppercase mb-3">
                         {t.contact.subtitle}
                     </p>
-                    <h2 className="heading-lg text-gradient">{t.contact.title}</h2>
+                    <h2 className="heading-lg text-[var(--primary-blue)]">{t.contact.title}</h2>
                     <p className="text-body max-w-2xl mx-auto mt-4">
                         {t.contact.description}
                     </p>
@@ -126,10 +126,6 @@ export default function Contact() {
                 {/* Contact Form Card */}
                 <div className="animate-on-scroll opacity-0 delay-100">
                     <div className="glass-light p-8 md:p-12 relative overflow-hidden">
-                        {/* Background Glow */}
-                        <div className="absolute -top-20 -right-20 w-60 h-60 bg-[var(--glow-purple)] rounded-full blur-[80px] opacity-30"></div>
-                        <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-[var(--glow-blue)] rounded-full blur-[80px] opacity-30"></div>
-
                         <form onSubmit={handleSubmit} className="relative z-10 space-y-6">
                             {/* Name & Email Row */}
                             <div className="grid md:grid-cols-2 gap-6">

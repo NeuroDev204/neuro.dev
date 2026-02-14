@@ -40,16 +40,14 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
     const colorClasses = {
         blue: {
-            gradient: "from-[var(--primary-blue)]/30 to-[var(--primary-cyan)]/20",
             glow: "var(--glow-blue)",
             badge: "neon-badge",
             accent: "var(--primary-cyan)",
         },
         purple: {
-            gradient: "from-[var(--secondary-purple)]/30 to-[var(--secondary-lavender)]/20",
-            glow: "var(--glow-purple)",
-            badge: "neon-badge-purple",
-            accent: "var(--secondary-lavender)",
+            glow: "var(--glow-blue)",
+            badge: "neon-badge",
+            accent: "var(--primary-blue)",
         },
     };
 
@@ -64,7 +62,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             <div
                 className="glass-card overflow-hidden h-full transition-all duration-500"
                 style={{
-                    boxShadow: isHovered ? `0 25px 60px -15px ${colors.glow}` : "none",
+                    boxShadow: isHovered ? `0 12px 28px -18px ${colors.glow}` : "none",
                 }}
             >
                 {/* Thumbnail */}
@@ -80,8 +78,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
                     {/* Hover Overlay */}
                     <div
-                        className="absolute inset-0 bg-gradient-to-t from-[var(--bg-dark)] to-transparent transition-opacity duration-300"
-                        style={{ opacity: isHovered ? 0.7 : 0.3 }}
+                        className="absolute inset-0 bg-[rgba(7,16,28,0.45)] transition-opacity duration-300"
+                        style={{ opacity: isHovered ? 0.65 : 0.25 }}
                     ></div>
                 </div>
 
@@ -173,7 +171,7 @@ export default function Projects() {
                     <p className="text-[var(--primary-cyan)] text-sm font-medium tracking-wider uppercase mb-3">
                         {t.projects.subtitle}
                     </p>
-                    <h2 className="heading-lg text-gradient">{t.projects.title}</h2>
+                    <h2 className="heading-lg text-[var(--primary-blue)]">{t.projects.title}</h2>
                     <p className="text-body max-w-2xl mx-auto mt-4">
                         {t.projects.description}
                     </p>
@@ -201,10 +199,6 @@ export default function Projects() {
                     </a>
                 </div>
             </div>
-
-            {/* Background Decoration */}
-            <div className="absolute left-0 top-1/3 w-72 h-72 bg-[var(--glow-blue)] rounded-full blur-[120px] opacity-15 pointer-events-none"></div>
-            <div className="absolute right-0 bottom-1/4 w-64 h-64 bg-[var(--glow-purple)] rounded-full blur-[100px] opacity-15 pointer-events-none"></div>
         </section>
     );
 }

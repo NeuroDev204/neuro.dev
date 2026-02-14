@@ -12,22 +12,24 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+const getInitialLanguage = (): Language => {
+    if (typeof window === "undefined") {
+        return "en";
+    }
+    const savedLanguage = window.localStorage.getItem("portfolio-language");
+    return savedLanguage === "vi" || savedLanguage === "en" ? savedLanguage : "en";
+};
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
-    const [language, setLanguageState] = useState<Language>("en");
+    const [language, setLanguageState] = useState<Language>(getInitialLanguage);
 
     useEffect(() => {
-        // Load saved language from localStorage
-        const savedLanguage = localStorage.getItem("portfolio-language") as Language;
-        if (savedLanguage && (savedLanguage === "vi" || savedLanguage === "en")) {
-            setLanguageState(savedLanguage);
-        }
-    }, []);
+        localStorage.setItem("portfolio-language", language);
+        document.documentElement.lang = language;
+    }, [language]);
 
     const setLanguage = (lang: Language) => {
         setLanguageState(lang);
-        localStorage.setItem("portfolio-language", lang);
-        // Update html lang attribute
-        document.documentElement.lang = lang;
     };
 
     const toggleLanguage = () => {

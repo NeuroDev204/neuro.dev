@@ -99,7 +99,7 @@ export default function Experience() {
                     <p className="text-[var(--primary-cyan)] text-sm font-medium tracking-wider uppercase mb-3">
                         {t.experience.subtitle}
                     </p>
-                    <h2 className="heading-lg text-gradient">{t.experience.title}</h2>
+                    <h2 className="heading-lg text-[var(--primary-blue)]">{t.experience.title}</h2>
                 </div>
 
                 {/* Timeline */}
@@ -154,7 +154,7 @@ export default function Experience() {
                                 <div className="mt-4">
                                     <span
                                         className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${exp.type === "intern"
-                                            ? "bg-[var(--secondary-purple)]/20 text-[var(--secondary-lavender)]"
+                                            ? "bg-[var(--primary-blue)]/20 text-[var(--primary-blue)]"
                                             : "bg-[var(--primary-cyan)]/20 text-[var(--primary-cyan)]"
                                             }`}
                                     >
@@ -166,8 +166,6 @@ export default function Experience() {
                     ))}
                 </div>
 
-                {/* Decorative Element */}
-                <div className="absolute right-10 top-1/2 -translate-y-1/2 w-64 h-64 bg-[var(--glow-purple)] rounded-full blur-[100px] opacity-20 pointer-events-none hidden lg:block"></div>
             </div>
         </section>
     );

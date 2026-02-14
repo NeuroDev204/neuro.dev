@@ -102,16 +102,21 @@ export default function Certifications() {
         return () => observer.disconnect();
     }, []);
 
+    useEffect(() => {
+        document.body.style.overflow = selectedPdf ? "hidden" : "auto";
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [selectedPdf]);
+
     const openPreview = (pdf: string, title: string) => {
         setSelectedPdf(pdf);
         setSelectedTitle(title);
-        document.body.style.overflow = "hidden";
     };
 
     const closePreview = () => {
         setSelectedPdf(null);
         setSelectedTitle("");
-        document.body.style.overflow = "auto";
     };
 
     return (
@@ -123,7 +128,7 @@ export default function Certifications() {
                         <p className="text-[var(--primary-cyan)] text-sm font-medium tracking-wider uppercase mb-3">
                             {language === "vi" ? "Chứng chỉ" : "Certifications"}
                         </p>
-                        <h2 className="heading-lg text-gradient">
+                        <h2 className="heading-lg text-[var(--primary-blue)]">
                             {language === "vi" ? "Chứng chỉ & Khóa học" : "Certificates & Courses"}
                         </h2>
                     </div>
@@ -186,8 +191,6 @@ export default function Certifications() {
                     </div>
                 </div>
 
-                {/* Background Decoration */}
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-64 bg-[var(--glow-cyan)] rounded-full blur-[120px] opacity-15 pointer-events-none"></div>
             </section>
 
             {/* PDF Preview Modal */}

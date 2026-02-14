@@ -26,7 +26,7 @@ const skillCategories: SkillCategory[] = [
     },
     {
         titleKey: "frameworks",
-        color: "var(--secondary-purple)",
+        color: "var(--primary-blue)",
         skills: [
             { name: "Spring Boot", level: 88 },
             { name: "Spring Security", level: 80 },
@@ -44,7 +44,7 @@ const skillCategories: SkillCategory[] = [
     },
     {
         titleKey: "tools",
-        color: "var(--secondary-lavender)",
+        color: "var(--primary-cyan)",
         skills: [
             { name: "Docker", level: 75 },
             { name: "Kafka", level: 70 },
@@ -76,7 +76,7 @@ function SkillBar({ skill, color, inView }: { skill: Skill; color: string; inVie
                     className="skill-bar-fill"
                     style={{
                         width: `${width}%`,
-                        background: `linear-gradient(90deg, ${color}, var(--secondary-purple))`,
+                        background: color,
                         transition: "width 1.5s cubic-bezier(0.4, 0, 0.2, 1)",
                     }}
                 ></div>
@@ -88,9 +88,8 @@ function SkillBar({ skill, color, inView }: { skill: Skill; color: string; inVie
 function SkillPill({ name, color }: { name: string; color: string }) {
     return (
         <div
-            className="glass-pill text-center transition-all duration-300 hover:scale-105"
+            className="glass-pill text-center transition-all duration-300"
             style={{
-                boxShadow: `0 0 20px ${color}40`,
                 borderColor: `${color}50`,
             }}
         >
@@ -137,7 +136,7 @@ export default function Skills() {
                     <p className="text-[var(--primary-cyan)] text-sm font-medium tracking-wider uppercase mb-3">
                         {t.skills.subtitle}
                     </p>
-                    <h2 className="heading-lg text-gradient">{t.skills.title}</h2>
+                    <h2 className="heading-lg text-[var(--primary-blue)]">{t.skills.title}</h2>
                 </div>
 
                 {/* Skill Pills Overview */}
@@ -167,7 +166,6 @@ export default function Skills() {
                                         className="w-10 h-10 rounded-xl flex items-center justify-center"
                                         style={{
                                             background: `${category.color}20`,
-                                            boxShadow: `0 0 20px ${category.color}30`,
                                         }}
                                     >
                                         <div
