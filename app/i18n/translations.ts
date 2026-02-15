@@ -127,15 +127,15 @@ export const translations = {
                         "MySQL + Neo4j + MongoDB + Redis + Kafka",
                     ],
                 },
-                instagram: {
-                    title: "Instagram Clone",
+                neuroEcommerce: {
+                    title: "Neuro Ecommerce Backend",
                     description:
-                        "Clone Instagram với đầy đủ tính năng đăng ảnh, stories, comments, likes và explore page.",
+                        "Neuro Ecommerce Backend is a Spring Boot and MySQL-based backend system for an e-commerce platform, providing RESTful APIs for user management, product catalog management, shopping cart operations, order processing, flash sale management, and real-time notifications.",
                     features: [
-                        "Image processing với Cloudinary",
-                        "Infinite scroll feed",
-                        "Real-time notifications",
-                        "Responsive design",
+                        "User management",
+                        "Product catalog management",
+                        "Shopping cart operations",
+                        "Order processing and flash sale management",
                     ],
                 },
             },
@@ -295,15 +295,15 @@ export const translations = {
                         "MySQL + Neo4j + MongoDB + Redis + Kafka",
                     ],
                 },
-                instagram: {
-                    title: "Instagram Clone",
+                neuroEcommerce: {
+                    title: "Neuro Ecommerce Backend",
                     description:
-                        "Instagram clone with full features: photo upload, stories, comments, likes, and explore page.",
+                        "Neuro Ecommerce Backend is a Spring Boot and MySQL-based backend system for an e-commerce platform, providing RESTful APIs for user management, product catalog management, shopping cart operations, order processing, flash sale management, and real-time notifications.",
                     features: [
-                        "Image processing with Cloudinary",
-                        "Infinite scroll feed",
-                        "Real-time notifications",
-                        "Responsive design",
+                        "User management",
+                        "Product catalog management",
+                        "Shopping cart operations",
+                        "Order processing and flash sale management",
                     ],
                 },
             },
@@ -338,3 +338,4 @@ export const translations = {
 
 export type Language = "vi" | "en";
 export type Translations = typeof translations.vi;
+

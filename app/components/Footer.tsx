@@ -26,12 +26,6 @@ export default function Footer() {
                     {/* Navigation Links */}
                     <div className="flex flex-wrap justify-center gap-6 text-sm">
                         <a
-                            href="#about"
-                            className="text-[var(--text-muted)] hover:text-[var(--primary-cyan)] transition-colors"
-                        >
-                            {t.nav.about}
-                        </a>
-                        <a
                             href="#skills"
                             className="text-[var(--text-muted)] hover:text-[var(--primary-cyan)] transition-colors"
                         >

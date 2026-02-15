@@ -6,7 +6,7 @@ import { useLanguage } from "../i18n";
 
 interface Project {
     id: number;
-    titleKey: "blur" | "instagram";
+    titleKey: "blur" | "neuroEcommerce";
     tech: string[];
     color: "blue" | "purple";
     image: string;
@@ -24,11 +24,11 @@ const projects: Project[] = [
     },
     {
         id: 2,
-        titleKey: "instagram",
-        tech: ["Java Spring Boot", "React", "Cloudinary", "MySQL"],
+        titleKey: "neuroEcommerce",
+        tech: ["Spring Boot", "MySQL", "RESTful API", "WebSocket"],
         color: "purple",
-        image: "/instagram.webp",
-        github: "https://github.com/NeuroDev204/instagram-api",
+        image: "/ecommerce.jpg",
+        github: "https://github.com/NeuroDev204/Neuro_Ecommerce_Backend",
     },
 ];
 
@@ -60,7 +60,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             onMouseLeave={() => setIsHovered(false)}
         >
             <div
-                className="glass-card overflow-hidden h-full transition-all duration-500"
+                className="glass-card overflow-hidden h-full flex flex-col transition-all duration-500"
                 style={{
                     boxShadow: isHovered ? `0 12px 28px -18px ${colors.glow}` : "none",
                 }}
@@ -84,7 +84,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 </div>
 
                 {/* Content */}
-                <div className="p-6 md:p-8">
+                <div className="p-6 md:p-8 flex flex-col flex-1">
                     {/* Title */}
                     <h3 className="heading-md mb-3" style={{ color: colors.accent }}>
                         {projectData.title}
@@ -128,7 +128,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={project.color === "blue" ? "btn-primary w-full" : "btn-secondary w-full"}
+                        className={`${project.color === "blue" ? "btn-primary" : "btn-secondary"} w-full mt-auto`}
                     >
                         <span>{t.projects.viewDetails}</span>
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

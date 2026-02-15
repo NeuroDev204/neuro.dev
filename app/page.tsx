@@ -1,6 +1,5 @@
 import Navigation from "./components/Navigation";
 import Hero from "./components/Hero";
-import About from "./components/About";
 import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import Certifications from "./components/Certifications";
@@ -16,7 +15,6 @@ export default function Home() {
       {/* Main Content */}
       <main className="relative z-10">
         <Hero />
-        <About />
         <Skills />
         <Experience />
         <Projects />
