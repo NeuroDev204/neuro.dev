@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useLanguage } from "../i18n";
 
@@ -40,9 +41,10 @@ export default function Navigation() {
                 {/* Logo */}
                 <a
                     href="#hero"
-                    className="text-2xl font-bold text-[var(--primary-blue)]"
+                    className="text-2xl font-bold text-[var(--primary-blue)] inline-flex items-center gap-3"
                     onClick={handleLinkClick}
                 >
+                    <Image src="/favicon.png" alt="" width={30} height={30} className="rounded-sm" />
                     Neuro.Dev
                 </a>
 

@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   title: "Neuro",
   description:
     "4th-year Software Engineering student at HUTECH. Experienced Java Backend Developer with expertise in Spring Boot, Microservices, MySQL, and MongoDB. 3 months Java Backend Intern and 3 months Software Engineer Intern.",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   keywords: [
     "Java Developer",
     "Backend Developer",
@@ -20,7 +25,7 @@ export const metadata: Metadata = {
     "Microservices",
     "MySQL",
     "MongoDB",
-    "Phạm Văn Sỹ",
+    "Phạm Văn Sỹ",  
     "Neuro.Dev",
     "HUTECH",
     "Software Engineer",
@@ -58,4 +63,3 @@ export default function RootLayout({
     </html>
   );
 }
-

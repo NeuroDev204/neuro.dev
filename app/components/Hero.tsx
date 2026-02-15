@@ -59,7 +59,8 @@ export default function Hero() {
                                 </p>
                                 <h1 className="heading-xl mb-2 text-[var(--primary-blue)]">{t.hero.name}</h1>
                                 <div className="mb-4 inline-block">
-                                    <span className="glass-pill text-lg md:text-xl font-bold px-6 py-2 text-[var(--primary-cyan)]">
+                                    <span className="glass-pill text-lg md:text-xl font-bold px-6 py-2 text-[var(--primary-cyan)] inline-flex items-center gap-3">
+                                        <Image src="/favicon.png" alt="" width={24} height={24} className="rounded-sm" />
                                         Neuro.Dev
                                     </span>
                                 </div>

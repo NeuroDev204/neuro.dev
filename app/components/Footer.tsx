@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLanguage } from "../i18n";
 
 export default function Footer() {
@@ -15,7 +16,8 @@ export default function Footer() {
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                     {/* Logo & Copyright */}
                     <div className="text-center md:text-left">
-                        <a href="#hero" className="text-2xl font-bold text-[var(--primary-blue)] inline-block mb-2">
+                        <a href="#hero" className="text-2xl font-bold text-[var(--primary-blue)] inline-flex items-center gap-3 mb-2">
+                            <Image src="/favicon.png" alt="" width={30} height={30} className="rounded-sm" />
                             Neuro.Dev
                         </a>
                         <p className="text-[var(--text-muted)] text-sm">
