@@ -150,17 +150,6 @@ export default function Experience() {
                                     ))}
                                 </ul>
 
-                                {/* Type Badge */}
-                                <div className="mt-4">
-                                    <span
-                                        className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${exp.type === "intern"
-                                            ? "bg-[var(--primary-blue)]/20 text-[var(--primary-blue)]"
-                                            : "bg-[var(--primary-cyan)]/20 text-[var(--primary-cyan)]"
-                                            }`}
-                                    >
-                                        {exp.type === "intern" ? t.experience.intern : t.experience.study}
-                                    </span>
-                                </div>
                             </div>
                         </div>
                     ))}

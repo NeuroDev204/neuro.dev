@@ -10,9 +10,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Neuro",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://neuro.io.vn"),
+  title: "Neuro.Dev | Pham Van Sy",
   description:
-    "4th-year Software Engineering student at HUTECH. Experienced Java Backend Developer with expertise in Spring Boot, Microservices, MySQL, and MongoDB. 3 months Java Backend Intern and 3 months Software Engineer Intern.",
+    "Java Backend Developer — Spring Boot, Microservices, MySQL, MongoDB, Neo4j, Redis, Kafka. Open to internship and full-time opportunities.",
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
@@ -25,24 +26,34 @@ export const metadata: Metadata = {
     "Microservices",
     "MySQL",
     "MongoDB",
-    "Phạm Văn Sỹ",  
+    "Phạm Văn Sỹ",
+    "Pham Van Sy",
     "Neuro.Dev",
     "HUTECH",
     "Software Engineer",
   ],
-  authors: [{ name: "Phạm Văn Sỹ", url: "https://github.com/NeuroDev204" }],
+  authors: [{ name: "Pham Van Sy", url: "https://github.com/NeuroDev204" }],
   openGraph: {
-    title: "Phạm Văn Sỹ (Neuro.Dev) | Java Backend Developer",
+    title: "Pham Van Sy (Neuro.Dev) | Java Backend Developer",
     description:
-      "4th-year Software Engineering student at HUTECH. Experienced Java Backend Developer with expertise in Spring Boot, Microservices, MySQL, and MongoDB.",
+      "Java Backend Developer — Spring Boot, Microservices, MySQL, MongoDB, Neo4j, Redis, Kafka. Open to internship and full-time opportunities.",
     type: "website",
     locale: "vi_VN",
+    images: [
+      {
+        url: "/profile.webp",
+        width: 800,
+        height: 1000,
+        alt: "Pham Van Sy — Neuro.Dev",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Phạm Văn Sỹ (Neuro.Dev) | Java Backend Developer",
+    title: "Pham Van Sy (Neuro.Dev) | Java Backend Developer",
     description:
-      "Experienced Java Backend Developer with expertise in Spring Boot, Microservices, MySQL, and MongoDB.",
+      "Java Backend Developer — Spring Boot, Microservices, MySQL, MongoDB, Neo4j, Redis, Kafka.",
+    images: ["/profile.webp"],
   },
   robots: {
     index: true,

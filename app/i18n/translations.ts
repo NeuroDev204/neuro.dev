@@ -17,7 +17,7 @@ export const translations = {
             name: "Phạm Văn Sỹ",
             role: "Java Backend Developer",
             description:
-                "Sinh viên năm 4 ngành Kỹ thuật phần mềm tại HUTECH. 3 tháng Java Backend Intern và 3 tháng Software Engineer Intern. Có kinh nghiệm với Spring Boot, Microservices, MySQL, MongoDB.",
+                "Có khả năng xây dựng backend service với Java và Spring Boot, phát triển RESTful APIs và làm việc với SQL/NoSQL sử dụng Hibernate/JPA. Với 3 tháng kinh nghiệm Backend Developer và 3 tháng IT Support.",
             viewProjects: "Xem dự án",
             downloadCV: "Tải CV",
         },
@@ -28,9 +28,9 @@ export const translations = {
             title: "Về tôi",
             greeting: "Xin chào! Tôi là",
             description1:
-                "Tôi là sinh viên năm 4 ngành Kỹ thuật phần mềm tại Đại học Công nghệ TP.HCM (HUTECH). Với niềm đam mê về lập trình và công nghệ, tôi luôn tìm kiếm cơ hội để học hỏi và phát triển bản thân trong lĩnh vực phát triển phần mềm.",
+                "Tôi có khả năng xây dựng các backend service với Java và Spring Boot, phát triển RESTful APIs, đồng thời làm việc với cả cơ sở dữ liệu SQL và NoSQL sử dụng Hibernate/JPA.",
             description2:
-                "Trong quá trình học tập và thực tập, tôi đã có 3 tháng kinh nghiệm làm Java Backend Intern và 3 tháng làm Software Engineer Intern. Tôi có kinh nghiệm làm việc với các công nghệ như Spring Boot, Microservices, MySQL, MongoDB và nhiều công cụ phát triển khác.",
+                "Với 3 tháng kinh nghiệm làm Backend Developer và 3 tháng IT Support, tôi luôn mong muốn được đóng góp vào các dự án thực tế và không ngừng phát triển bản thân.",
             highlights: {
 
                 teamwork: {
@@ -63,7 +63,7 @@ export const translations = {
                 tools: "Công cụ & DevOps",
             },
             moreSkills:
-                "Và nhiều công nghệ khác như: REST APIs, WebSocket, JWT, OAuth2, Redis, RabbitMQ...",
+                "Và nhiều công nghệ khác như: Python, TypeScript, JavaScript, FastAPI, Kafka, Keycloak, WebRTC, WebSocket, ONNX Runtime, Resilience4j, Redisson, Nginx...",
         },
 
         // Experience Section
@@ -74,7 +74,7 @@ export const translations = {
             study: "Học tập",
             items: {
                 backendDeveloper: {
-                    title: "Backend Developer Intern",
+                    title: "Backend Developer",
                     company: "Amethyst Medical Việt Nam",
                     period: "Tháng 9/2025 - Tháng 11/2025",
                     description: [
@@ -85,7 +85,7 @@ export const translations = {
                     ],
                 },
                 engineeringIntern: {
-                    title: "Engineering Intern",
+                    title: "IT Support",
                     company: "LEAD AND AIM TECHNOLOGY SOLUTIONS",
                     period: "Tháng 6/2025 - Tháng 9/2025",
                     description: [
@@ -100,7 +100,8 @@ export const translations = {
                     period: "2022 - Nay",
                     description: [
                         "Sinh viên năm 4 ngành Kỹ thuật phần mềm",
-                        "Tham gia các dự án thực tế và nghiên cứu khoa học",
+                        "Tham gia các dự án thực tế",
+                        "Sinh viên tiêu biểu năm học 2024 - 2025",
                         "Hoạt động ngoại khóa và phát triển kỹ năng mềm",
                     ],
                 },
@@ -119,12 +120,13 @@ export const translations = {
                 blur: {
                     title: "Blur Social Network",
                     description:
-                        "Mạng xã hội đầy đủ tính năng với kiến trúc microservices, hỗ trợ realtime messaging, video call và đa cơ sở dữ liệu.",
+                        "Nền tảng mạng xã hội full-stack theo kiến trúc microservices: realtime chat, WebRTC video/audio call, feed CQRS, AI chat với Gemini và kiểm duyệt bình luận tiếng Việt bằng PhoBERT v2/ONNX.",
                     features: [
-                        "OAuth2 Authentication & Authorization",
-                        "Voice Call & Video Call Realtime",
-                        "Chat, Story 24h, Post, Like, Comment",
-                        "MySQL + Neo4j + MongoDB + Redis + Kafka",
+                        "Keycloak 26.1 (OIDC/JWT) + Spring OAuth2 Resource Server",
+                        "Realtime Chat (Socket.IO) & WebRTC Video/Audio Call",
+                        "Feed CQRS, Social Graph Neo4j, Post/Story/Like/Comment",
+                        "AI Chat (Gemini) & kiểm duyệt PhoBERT v2 / ONNX Runtime",
+                        "Multi-Level Cache: Caffeine + Redis + Redisson Distributed Lock",
                     ],
                 },
                 neuroEcommerce: {
@@ -136,6 +138,7 @@ export const translations = {
                         "Product catalog management",
                         "Shopping cart operations",
                         "Order processing and flash sale management",
+                        "VNPay payment gateway integration",
                     ],
                 },
             },
@@ -182,10 +185,10 @@ export const translations = {
         // Hero Section
         hero: {
             greeting: "Hello, I am",
-            name: "Phạm Văn Sỹ",
+            name: "Pham Van Sy",
             role: "Java Backend Developer",
             description:
-                "4th-year Software Engineering student at HUTECH. 3 months Java Backend Intern and 3 months Software Engineer Intern. Experienced with Spring Boot, Microservices, MySQL, MongoDB.",
+                "I can build backend services using Java and Spring Boot, develop RESTful APIs, and work with SQL and NoSQL databases using Hibernate/JPA. With 3 months as a Backend Developer and 3 months as IT Support.",
             viewProjects: "View Projects",
             downloadCV: "Download CV",
         },
@@ -196,9 +199,9 @@ export const translations = {
             title: "About Me",
             greeting: "Hello! I am",
             description1:
-                "I am a 4th-year Software Engineering student at Ho Chi Minh City University of Technology (HUTECH). With a passion for programming and technology, I am always looking for opportunities to learn and grow in the field of software development.",
+                "I can build backend services using Java and Spring Boot, develop RESTful APIs, and work with SQL and NoSQL databases using Hibernate/JPA.",
             description2:
-                "During my studies and internships, I have gained 3 months of experience as a Java Backend Intern and 3 months as a Software Engineer Intern. I have experience working with technologies such as Spring Boot, Microservices, MySQL, MongoDB, and many other development tools.",
+                "With 3 months as a Backend Developer and 3 months as IT Support, I am eager to contribute to real projects and grow as a Java Backend Developer.",
             highlights: {
 
                 teamwork: {
@@ -231,7 +234,7 @@ export const translations = {
                 tools: "Tools & DevOps",
             },
             moreSkills:
-                "And many other technologies: REST APIs, WebSocket, JWT, OAuth2, Redis, RabbitMQ...",
+                "And many other technologies: Python, TypeScript, JavaScript, FastAPI, Kafka, Keycloak, WebRTC, WebSocket, ONNX Runtime, Resilience4j, Redisson, Nginx...",
         },
 
         // Experience Section
@@ -253,7 +256,7 @@ export const translations = {
                     ],
                 },
                 engineeringIntern: {
-                    title: "Engineering Intern",
+                    title: "IT Support",
                     company: "LEAD AND AIM TECHNOLOGY SOLUTIONS",
                     period: "Jun 2025 - Sep 2025",
                     description: [
@@ -268,7 +271,8 @@ export const translations = {
                     period: "2022 - Present",
                     description: [
                         "4th-year Software Engineering student",
-                        "Participated in real projects and scientific research",
+                        "Participated in real-world projects",
+                        "Outstanding Student of the 2024 - 2025 academic year",
                         "Extracurricular activities and soft skills development",
                     ],
                 },
@@ -287,12 +291,13 @@ export const translations = {
                 blur: {
                     title: "Blur Social Network",
                     description:
-                        "Full-featured social network with microservices architecture, realtime messaging, video call and multi-database support.",
+                        "Full-stack social networking platform on microservices: realtime chat, WebRTC video/audio calls, CQRS feed, Gemini AI chat, and Vietnamese comment moderation via PhoBERT v2/ONNX.",
                     features: [
-                        "OAuth2 Authentication & Authorization",
-                        "Voice Call & Video Call Realtime",
-                        "Chat, Story 24h, Post, Like, Comment",
-                        "MySQL + Neo4j + MongoDB + Redis + Kafka",
+                        "Keycloak 26.1 (OIDC/JWT) + Spring OAuth2 Resource Server",
+                        "Realtime Chat (Socket.IO) & WebRTC Video/Audio Calls",
+                        "CQRS Feed, Neo4j Social Graph, Post/Story/Like/Comment",
+                        "Gemini AI Chat & PhoBERT v2 / ONNX Vietnamese Moderation",
+                        "Multi-Level Cache: Caffeine + Redis + Redisson Distributed Lock",
                     ],
                 },
                 neuroEcommerce: {
@@ -304,6 +309,7 @@ export const translations = {
                         "Product catalog management",
                         "Shopping cart operations",
                         "Order processing and flash sale management",
+                        "VNPay payment gateway integration",
                     ],
                 },
             },

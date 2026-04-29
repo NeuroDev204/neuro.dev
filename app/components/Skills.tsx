@@ -7,15 +7,20 @@ import { FaDatabase } from "react-icons/fa6";
 import {
     SiApachekafka,
     SiDocker,
+    SiFastapi,
     SiGit,
-    SiHibernate,
     SiJavascript,
     SiMongodb,
     SiMysql,
     SiNeo4J,
     SiOpenjdk,
+    SiPython,
+    SiReact,
+    SiRedis,
+    SiSpring,
     SiSpringboot,
     SiSpringsecurity,
+    SiTypescript,
 } from "react-icons/si";
 
 interface Skill {
@@ -35,50 +40,50 @@ const skillCategories: SkillCategory[] = [
         titleKey: "languages",
         color: "var(--primary-blue)",
         skills: [
-            { name: "Java", icon: SiOpenjdk, iconColor: "#FFFFFF" },
-            { name: "SQL", icon: FaDatabase },
-            { name: "JavaScript", icon: SiJavascript },
+            { name: "Java", icon: SiOpenjdk, iconColor: "#ED8B00" },
+            { name: "SQL", icon: FaDatabase, iconColor: "#00758F" },
         ],
     },
     {
         titleKey: "frameworks",
         color: "var(--primary-blue)",
         skills: [
-            { name: "Spring Boot", icon: SiSpringboot },
-            { name: "Spring Security", icon: SiSpringsecurity },
-            { name: "Hibernate", icon: SiHibernate },
+            { name: "Spring Boot", icon: SiSpringboot, iconColor: "#6DB33F" },
+            { name: "Spring Security", icon: SiSpringsecurity, iconColor: "#6DB33F" },
+            { name: "Spring Cloud", icon: SiSpring, iconColor: "#6DB33F" },
+            { name: "React", icon: SiReact, iconColor: "#61DAFB" },
         ],
     },
     {
         titleKey: "databases",
         color: "var(--primary-cyan)",
         skills: [
-            { name: "MySQL", icon: SiMysql },
-            { name: "MongoDB", icon: SiMongodb },
-            { name: "Neo4j", icon: SiNeo4J },
+            { name: "MySQL", icon: SiMysql, iconColor: "#4479A1" },
+            { name: "MongoDB", icon: SiMongodb, iconColor: "#47A248" },
+            { name: "Neo4j", icon: SiNeo4J, iconColor: "#018BFF" },
+            { name: "Redis", icon: SiRedis, iconColor: "#DC382D" },
         ],
     },
     {
         titleKey: "tools",
         color: "var(--primary-cyan)",
         skills: [
-            { name: "Docker", icon: SiDocker },
-            { name: "Kafka", icon: SiApachekafka },
-            { name: "Git", icon: SiGit },
+            { name: "Docker", icon: SiDocker, iconColor: "#2496ED" },
+            { name: "Git", icon: SiGit, iconColor: "#F05032" },
         ],
     },
 ];
 
-function SkillPill({ name, color, Icon }: { name: string; color: string; Icon: IconType }) {
+function SkillPill({ name, color, iconColor, Icon }: { name: string; color: string; iconColor?: string; Icon: IconType }) {
     return (
         <div
             className="glass-pill text-center transition-all duration-300 flex items-center gap-2"
             style={{
-                borderColor: `${color}50`,
+                borderColor: `${iconColor ?? color}40`,
             }}
         >
-            <Icon className="w-4 h-4" style={{ color }} aria-hidden="true" />
-            <span className="font-medium" style={{ color }}>
+            <Icon className="w-4 h-4" style={{ color: iconColor ?? color }} aria-hidden="true" />
+            <span className="font-medium text-white">
                 {name}
             </span>
         </div>
@@ -128,7 +133,7 @@ export default function Skills() {
                         <div className="flex flex-wrap justify-center gap-3">
                             {skillCategories.flatMap((category) =>
                                 category.skills.map((skill) => (
-                                    <SkillPill key={skill.name} name={skill.name} color={category.color} Icon={skill.icon} />
+                                    <SkillPill key={skill.name} name={skill.name} color={category.color} iconColor={skill.iconColor} Icon={skill.icon} />
                                 ))
                             )}
                         </div>

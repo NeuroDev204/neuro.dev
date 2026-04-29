@@ -17,7 +17,7 @@ const projects: Project[] = [
     {
         id: 1,
         titleKey: "blur",
-        tech: ["Spring Boot", "MySQL", "Neo4j", "MongoDB", "Redis", "Kafka", "WebSocket"],
+        tech: ["Spring Boot", "Keycloak", "Neo4j", "MongoDB", "Redis", "Kafka", "WebRTC", "PhoBERT", "React", "Docker"],
         color: "blue",
         image: "/blur.webp",
         github: "https://github.com/NeuroDev204/Blur",
