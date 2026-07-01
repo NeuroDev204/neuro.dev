@@ -6,7 +6,9 @@
       "Bash(npm install *)",
       "Bash(git add *)",
       "Bash(git commit -q -m ' *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(gh auth *)",
+      "Read(//home/neuro/.ssh/**)"
     ]
   }
 }
