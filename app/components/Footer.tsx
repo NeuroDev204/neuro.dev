@@ -1,62 +1,80 @@
 "use client";
 
 import Image from "next/image";
-import { useLanguage } from "../i18n";
+import { FaGithub, FaLinkedin, FaFacebook, FaArrowUp } from "react-icons/fa6";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
-    const { t } = useLanguage();
+
+    const socialLinks = [
+        {
+            name: "GitHub",
+            href: "https://github.com/NeuroDev204",
+            icon: FaGithub,
+        },
+        {
+            name: "LinkedIn",
+            href: "https://www.linkedin.com/in/syvan2004/",
+            icon: FaLinkedin,
+        },
+        {
+            name: "Facebook",
+            href: "https://www.facebook.com/van.sy.02.02.2004",
+            icon: FaFacebook,
+        },
+    ];
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
 
     return (
-        <footer className="relative py-12 px-6">
-            {/* Divider Line */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 max-w-2xl h-px bg-[var(--glass-border)]"></div>
-
-            <div className="container max-w-6xl mx-auto">
+        <footer className="border-t border-[var(--border-subtle)] bg-[var(--bg-primary)] py-8 mt-20">
+            <div className="max-w-7xl mx-auto px-6">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                     {/* Logo & Copyright */}
-                    <div className="text-center md:text-left">
-                        <a href="#hero" className="text-2xl font-bold text-[var(--primary-blue)] inline-flex items-center gap-3 mb-2">
-                            <Image src="/favicon.png" alt="" width={30} height={30} className="rounded-sm" />
+                    <div className="flex flex-col sm:flex-row items-center gap-3 text-center md:text-left">
+                        <a href="#hero" className="font-serif-editorial text-xl font-bold text-[var(--text-primary)] inline-flex items-center gap-2">
+                            <Image src="/favicon.png" alt="Neuro.Dev Logo" width={24} height={24} className="rounded-sm" />
                             Neuro.Dev
                         </a>
-                        <p className="text-[var(--text-muted)] text-sm">
+                        <span className="hidden sm:inline text-[var(--border-subtle)]">•</span>
+                        <p className="text-xs md:text-sm text-[var(--text-secondary)]">
                             © {currentYear} Phạm Văn Sỹ. All rights reserved.
                         </p>
                     </div>
 
-                    {/* Navigation Links */}
-                    <div className="flex flex-wrap justify-center gap-6 text-sm">
-                        <a
-                            href="#skills"
-                            className="text-[var(--text-muted)] hover:text-[var(--primary-cyan)] transition-colors"
-                        >
-                            {t.nav.skills}
-                        </a>
-                        <a
-                            href="#projects"
-                            className="text-[var(--text-muted)] hover:text-[var(--primary-cyan)] transition-colors"
-                        >
-                            {t.nav.projects}
-                        </a>
-                        <a
-                            href="#contact"
-                            className="text-[var(--text-muted)] hover:text-[var(--primary-cyan)] transition-colors"
-                        >
-                            {t.nav.contact}
-                        </a>
-                    </div>
+                    {/* Right side: Social links & Back to top button */}
+                    <div className="flex items-center gap-6">
+                        {/* Social Icons */}
+                        <div className="flex items-center gap-3">
+                            {socialLinks.map((social) => {
+                                const Icon = social.icon;
+                                return (
+                                    <a
+                                        key={social.name}
+                                        href={social.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label={social.name}
+                                        className="w-9 h-9 rounded-full bg-[var(--accent-mint-light)] text-[var(--accent-mint-text)] flex items-center justify-center hover:bg-[var(--accent-mint)] hover:scale-105 transition-all text-sm"
+                                    >
+                                        <Icon />
+                                    </a>
+                                );
+                            })}
+                        </div>
 
-                    {/* Back to Top */}
-                    <a
-                        href="#hero"
-                        className="glass w-12 h-12 rounded-full flex items-center justify-center text-[var(--text-secondary)] hover:text-white hover:bg-[var(--glass-bg-light)] transition-all hover:-translate-y-1"
-                        aria-label="Back to top"
-                    >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                        </svg>
-                    </a>
+                        {/* Mint Back to Top Pill Button */}
+                        <button
+                            onClick={scrollToTop}
+                            className="px-4 py-2 text-xs font-semibold rounded-full bg-[var(--accent-mint-light)] text-[var(--accent-mint-text)] hover:bg-[var(--accent-mint)] hover:-translate-y-0.5 transition-all flex items-center gap-2 cursor-pointer border border-[var(--accent-mint)]/40"
+                            aria-label="Back to top"
+                        >
+                            <span>Back to Top</span>
+                            <FaArrowUp className="text-xs" />
+                        </button>
+                    </div>
                 </div>
             </div>
         </footer>
