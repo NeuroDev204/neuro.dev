@@ -1,105 +1,77 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { useLanguage } from "../i18n";
 
 export default function Hero() {
-    const heroRef = useRef<HTMLElement>(null);
     const { t } = useLanguage();
 
     const handleDownloadCV = () => {
         window.location.href = "/api/download-cv";
     };
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("animate-fade-in-up");
-                    }
-                });
-            },
-            { threshold: 0.1 }
-        );
-
-        const elements = heroRef.current?.querySelectorAll(".animate-on-scroll");
-        elements?.forEach((el) => observer.observe(el));
-
-        return () => observer.disconnect();
-    }, []);
-
     return (
         <section
             id="hero"
-            ref={heroRef}
-            className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
+            className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[85vh] flex items-center"
         >
-            <div className="container px-6 py-20">
-                <div className="glass-light p-8 md:p-12 lg:p-16 max-w-4xl mx-auto relative overflow-hidden">
-                    <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-                        <div className="relative flex-shrink-0">
-                            <div className="w-40 h-40 md:w-52 md:h-52 rounded-full glass overflow-hidden relative">
-                                <Image
-                                    src="/profile.webp"
-                                    alt="Pham Van Sy - Neuro.Dev"
-                                    fill
-                                    className="object-cover"
-                                    priority
-                                />
-                                <div className="absolute inset-0 rounded-full border-2 border-[var(--primary-cyan)]/60"></div>
-                            </div>
-                        </div>
-
-                        <div className="flex-1 text-center lg:text-left">
-                            <div className="animate-on-scroll opacity-0">
-                                <p className="text-[var(--primary-cyan)] text-sm md:text-base font-medium mb-3 tracking-wider uppercase">
-                                    {t.hero.greeting}
-                                </p>
-                                <h1 className="heading-xl mb-2 text-[var(--primary-blue)]">{t.hero.name}</h1>
-                                <div className="mb-4 inline-block">
-                                    <span className="glass-pill text-lg md:text-xl font-bold px-6 py-2 text-[var(--primary-cyan)] inline-flex items-center gap-3">
-                                        <Image src="/favicon.png" alt="" width={24} height={24} className="rounded-sm" />
-                                        Neuro.Dev
-                                    </span>
+            <div className="max-w-7xl mx-auto px-6 w-full">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    {/* Left Column: Portrait framing */}
+                    <div className="lg:col-span-5 flex justify-center order-1 lg:order-1">
+                        <div className="relative flex justify-center items-center">
+                            {/* Soft pastel mint circle background element framing behind portrait */}
+                            <div className="w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-[var(--accent-mint-light)] flex items-center justify-center transition-all duration-300">
+                                {/* Smooth circular profile picture with crisp border */}
+                                <div className="relative w-60 h-60 sm:w-68 sm:h-68 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-[var(--bg-primary)] shadow-xl flex-shrink-0">
+                                    <Image
+                                        src="/profile.webp"
+                                        alt={t.hero.name || "Pham Van Sy"}
+                                        fill
+                                        priority
+                                        sizes="(max-width: 768px) 270px, 320px"
+                                        className="object-cover"
+                                    />
                                 </div>
-                                <h2 className="heading-md text-[var(--text-secondary)] mb-6">{t.hero.role}</h2>
-                            </div>
-
-                            <div className="animate-on-scroll opacity-0 delay-200">
-                                <p className="text-body max-w-2xl mb-8">{t.hero.description}</p>
-                            </div>
-
-                            <div className="animate-on-scroll opacity-0 delay-300 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                                <a href="#projects" className="btn-primary">
-                                    <span>{t.hero.viewProjects}</span>
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                    </svg>
-                                </a>
-                                <button onClick={handleDownloadCV} className="btn-secondary">
-                                    <span>{t.hero.downloadCV}</span>
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={2}
-                                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                                        />
-                                    </svg>
-                                </button>
                             </div>
                         </div>
                     </div>
 
-                    <div className="absolute top-4 left-4 w-20 h-20 border border-[var(--glass-border)] rounded-full opacity-25"></div>
-                    <div className="absolute bottom-4 right-4 w-24 h-24 border border-[var(--glass-border)] rounded-full opacity-20"></div>
-                </div>
+                    {/* Right Column: Editorial typography & CTAs */}
+                    <div className="lg:col-span-7 flex flex-col justify-center text-center lg:text-left order-2 lg:order-2">
+                        {/* Role tag / subtext highlighting backend specialization */}
+                        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--accent-mint-light)] text-[var(--accent-mint-text)] text-xs sm:text-sm font-semibold tracking-wider uppercase mb-5 w-fit mx-auto lg:mx-0">
+                            <span className="w-2 h-2 rounded-full bg-[var(--accent-mint)]"></span>
+                            <span>{t.hero.role}</span>
+                        </div>
 
-                <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
-                    <div className="w-6 h-10 border-2 border-[var(--glass-border-light)] rounded-full flex justify-center">
-                        <div className="w-1 h-3 bg-[var(--primary-cyan)] rounded-full mt-2"></div>
+                        {/* Editorial Headline */}
+                        <h1 className="font-serif-editorial text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-primary)] leading-tight mb-4">
+                            {t.hero.headline || "Building robust backend solutions"}
+                        </h1>
+
+                        {/* Bio description paragraph */}
+                        <p className="text-[var(--text-secondary)] text-base md:text-lg leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0">
+                            {t.hero.description}
+                        </p>
+
+                        {/* CTA Buttons container */}
+                        <div className="flex flex-wrap gap-4 items-center justify-center lg:justify-start">
+                            <a
+                                href="#projects"
+                                className="btn-pill-primary text-base px-6 py-3"
+                            >
+                                <span>{t.hero.viewProjects}</span>
+                                <span className="ml-1 text-sm">∨</span>
+                            </a>
+                            <button
+                                onClick={handleDownloadCV}
+                                className="btn-pill-secondary text-base px-6 py-3"
+                            >
+                                <span>{t.hero.downloadCV}</span>
+                                <span className="ml-1 text-sm">⤓</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

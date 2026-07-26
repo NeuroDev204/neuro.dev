@@ -16,8 +16,9 @@ export const translations = {
             greeting: "Xin chào, tôi là",
             name: "Phạm Văn Sỹ",
             role: "Java Backend Developer",
+            headline: "Xây dựng giải pháp Backend vững chắc",
             description:
-                "Có khả năng xây dựng backend service với Java và Spring Boot, phát triển RESTful APIs và làm việc với SQL/NoSQL sử dụng Hibernate/JPA. Với 3 tháng kinh nghiệm Backend Developer và 3 tháng IT Support.",
+                "Lập trình viên Java Backend giàu kinh nghiệm chuyên về Spring Boot, RESTful APIs và kiến trúc dữ liệu. Cam kết mang lại các giải pháp chất lượng cao, có khả năng mở rộng cho các hệ thống phức tạp.",
             viewProjects: "Xem dự án",
             downloadCV: "Tải CV",
         },
@@ -187,8 +188,9 @@ export const translations = {
             greeting: "Hello, I am",
             name: "Pham Van Sy",
             role: "Java Backend Developer",
+            headline: "Building robust backend solutions",
             description:
-                "I can build backend services using Java and Spring Boot, develop RESTful APIs, and work with SQL and NoSQL databases using Hibernate/JPA. With 3 months as a Backend Developer and 3 months as IT Support.",
+                "Experienced Java Backend Developer specializing in Spring Boot, RESTful APIs, and data architecture. Committed to delivering high-quality, scalable solutions for complex systems.",
             viewProjects: "View Projects",
             downloadCV: "Download CV",
         },
