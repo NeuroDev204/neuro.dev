@@ -820,3 +820,5 @@ export type Translations = typeof translations.vi;
 // Enforce strict bidirectional type symmetry at compile time
 const _symmetryCheckViToEn: typeof translations.vi = translations.en;
 const _symmetryCheckEnToVi: typeof translations.en = translations.vi;
+void _symmetryCheckViToEn;
+void _symmetryCheckEnToVi;

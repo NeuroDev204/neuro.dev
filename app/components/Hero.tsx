@@ -101,7 +101,7 @@ export default function Hero() {
                                         rel={isMail ? undefined : "noopener noreferrer"}
                                         aria-label={social.name}
                                         title={social.name}
-                                        className="w-10 h-10 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--text-muted)] hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center text-lg shadow-xs"
+                                        className="w-10 h-10 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--text-muted)] hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center text-lg shadow-xs cursor-pointer"
                                     >
                                         <Icon aria-hidden="true" />
                                     </a>

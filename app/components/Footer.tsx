@@ -48,7 +48,7 @@ export default function Footer() {
                         <p className="text-xs text-[var(--text-secondary)]">
                             © 2026 Phạm Văn Sỹ. Minimalist Tech Design.
                         </p>
-                        <p className="text-[11px] text-[var(--text-muted)]">
+                        <p className="text-[11px] text-[var(--text-secondary)]">
                             {t.footer?.using ||
                                 (isVi
                                     ? "Xây dựng bằng Next.js & Minimalist Tech Design System"

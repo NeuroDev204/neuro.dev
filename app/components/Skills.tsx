@@ -276,7 +276,7 @@ export default function Skills() {
 
                 {/* Additional Technologies Note */}
                 {t.skills?.moreSkills && (
-                    <p className="mt-10 text-center text-xs sm:text-sm text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed">
+                    <p className="mt-10 text-center text-xs sm:text-sm text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
                         {t.skills.moreSkills}
                     </p>
                 )}

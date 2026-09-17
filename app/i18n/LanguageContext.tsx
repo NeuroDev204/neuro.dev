@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, useEffect, useSyncExternalStore, ReactNode } from "react";
 import { translations, Language, Translations } from "./translations";
 
 interface LanguageContextType {
@@ -12,23 +12,43 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+let listeners: Array<() => void> = [];
+
+function emitChange() {
+    for (const listener of listeners) {
+        listener();
+    }
+}
+
+function subscribe(callback: () => void) {
+    listeners.push(callback);
+    window.addEventListener("storage", callback);
+    return () => {
+        listeners = listeners.filter((l) => l !== callback);
+        window.removeEventListener("storage", callback);
+    };
+}
+
+function getSnapshot(): Language {
+    if (typeof window === "undefined") return "en";
+    const saved = localStorage.getItem("portfolio-language");
+    return saved === "vi" ? "vi" : "en";
+}
+
+function getServerSnapshot(): Language {
+    return "en";
+}
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
-    const [language, setLanguageState] = useState<Language>("en");
+    const language = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
     useEffect(() => {
-        const saved = localStorage.getItem("portfolio-language");
-        if (saved === "vi" || saved === "en") {
-            setLanguageState(saved);
-        }
-    }, []);
-
-    useEffect(() => {
-        localStorage.setItem("portfolio-language", language);
         document.documentElement.lang = language;
     }, [language]);
 
     const setLanguage = (lang: Language) => {
-        setLanguageState(lang);
+        localStorage.setItem("portfolio-language", lang);
+        emitChange();
     };
 
     const toggleLanguage = () => {
