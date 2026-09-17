@@ -101,20 +101,26 @@ export default function Contact() {
         <section id="contact" className="py-20 md:py-28 relative">
             <div className="max-w-7xl mx-auto px-6">
                 {/* Section Title */}
-                <h2 className="font-serif-editorial text-3xl md:text-4xl font-bold mb-8 text-[var(--text-primary)]">
-                    {t.contact.title || (isVi ? "Kết nối với tôi" : "Get In Touch")}
-                </h2>
+                <div className="text-left mb-12">
+                    <div className="pill-tag mb-4 w-fit">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
+                        <span>{t.contact?.subtitle || (isVi ? "Liên hệ" : "Contact")}</span>
+                    </div>
+                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
+                        {t.contact?.title || (isVi ? "Kết nối với tôi" : "Get In Touch")}
+                    </h2>
+                </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                     {/* Left Column: Contact Info Card */}
                     <div className="lg:col-span-5">
-                        <div className="editorial-card p-6 md:p-8 h-full flex flex-col justify-between">
+                        <div className="clean-card p-6 md:p-8 h-full flex flex-col justify-between">
                             <div>
-                                <h3 className="font-serif-editorial text-2xl font-bold text-[var(--text-primary)] mb-4">
+                                <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-4">
                                     {isVi ? "Thông tin liên hệ" : "Contact Information"}
                                 </h3>
                                 <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed mb-8">
-                                    {t.contact.description || (isVi ? "Bạn có câu hỏi hoặc muốn hợp tác? Hãy liên hệ với tôi!" : "Have a question or want to collaborate? Feel free to contact me!")}
+                                    {t.contact?.description || (isVi ? "Bạn có câu hỏi hoặc muốn hợp tác? Hãy liên hệ với tôi!" : "Have a question or want to collaborate? Feel free to contact me!")}
                                 </p>
 
                                 <div className="space-y-6">
@@ -122,7 +128,7 @@ export default function Contact() {
                                         const IconComp = item.icon;
                                         return (
                                             <div key={idx} className="flex items-center gap-4">
-                                                <div className="w-10 h-10 rounded-full bg-[var(--accent-mint-light)] text-[var(--accent-mint-text)] flex items-center justify-center flex-shrink-0">
+                                                <div className="w-10 h-10 rounded-full bg-[var(--bg-card-hover)] text-[var(--text-primary)] border border-[var(--border-subtle)] flex items-center justify-center flex-shrink-0">
                                                     <IconComp className="text-base" />
                                                 </div>
                                                 <div>
@@ -134,7 +140,7 @@ export default function Contact() {
                                                             href={item.href}
                                                             target={item.href.startsWith("http") ? "_blank" : undefined}
                                                             rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                                                            className="text-sm font-medium text-[var(--text-primary)] hover:text-[var(--accent-mint-text)] transition-colors"
+                                                            className="text-sm font-medium text-[var(--text-primary)] hover:underline transition-colors"
                                                         >
                                                             {item.value}
                                                         </a>
@@ -154,7 +160,7 @@ export default function Contact() {
 
                     {/* Right Column: Form Card */}
                     <div className="lg:col-span-7">
-                        <div className="editorial-card p-6 md:p-8">
+                        <div className="clean-card p-6 md:p-8">
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
@@ -168,7 +174,7 @@ export default function Contact() {
                                             value={formData.name}
                                             onChange={handleChange}
                                             required
-                                            className="w-full rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--accent-mint)] outline-none"
+                                            className="w-full rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--text-muted)] focus:border-[var(--text-primary)] outline-none"
                                             placeholder={t.contact.form.namePlaceholder}
                                         />
                                     </div>
@@ -183,7 +189,7 @@ export default function Contact() {
                                             value={formData.email}
                                             onChange={handleChange}
                                             required
-                                            className="w-full rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--accent-mint)] outline-none"
+                                            className="w-full rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--text-muted)] focus:border-[var(--text-primary)] outline-none"
                                             placeholder={t.contact.form.emailPlaceholder}
                                         />
                                     </div>
@@ -200,7 +206,7 @@ export default function Contact() {
                                         onChange={handleChange}
                                         required
                                         rows={5}
-                                        className="w-full rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--accent-mint)] outline-none resize-none"
+                                        className="w-full rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--text-muted)] focus:border-[var(--text-primary)] outline-none resize-none"
                                         placeholder={t.contact.form.messagePlaceholder}
                                     ></textarea>
                                 </div>
