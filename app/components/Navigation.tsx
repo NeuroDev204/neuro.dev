@@ -34,10 +34,10 @@ export default function Navigation() {
             <header className="sticky top-0 z-40 border-b border-line bg-bg/70 backdrop-blur-xl">
                 <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
                     <a href="#top" className="flex items-center gap-2.5 text-[15px] font-semibold tracking-tight">
-                        <span className="grid size-8 place-items-center rounded-lg bg-accent font-mono text-[13px] font-bold text-accent-fg">
-                            SP
+                        <span className="grid size-8 place-items-center rounded-lg bg-accent font-mono text-[15px] font-bold text-accent-fg">
+                            N
                         </span>
-                        Sy Pham
+                        neuro
                     </a>
 
                     <nav className="hidden items-center gap-1 md:flex" aria-label={t.nav.primary}>
