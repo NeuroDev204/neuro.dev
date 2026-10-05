@@ -1,252 +1,146 @@
 "use client";
 
-import Image from "next/image";
-import { useState, useEffect } from "react";
-import { FiSun, FiMoon, FiGlobe, FiMenu, FiX } from "react-icons/fi";
+import { useEffect, useState } from "react";
+import { LuMenu, LuX } from "react-icons/lu";
 import { useLanguage } from "../i18n";
+import type { Language } from "../i18n";
+
+const LANGUAGES: Language[] = ["en", "vi"];
 
 export default function Navigation() {
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [theme, setTheme] = useState<"light" | "dark">("light");
-    const [activeSection, setActiveSection] = useState<string>("hero");
-    const { language, t, toggleLanguage } = useLanguage();
-    const isVi = language === "vi";
+    const { t, language, setLanguage } = useLanguage();
+    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
-    const navLinks = [
-        { name: t.nav?.home || (isVi ? "Trang chủ" : "Home"), href: "#hero", id: "hero" },
-        { name: t.nav?.about || (isVi ? "Giới thiệu" : "About"), href: "#about", id: "about" },
-        { name: t.nav?.skills || (isVi ? "Kỹ năng" : "Skills"), href: "#skills", id: "skills" },
-        { name: t.nav?.projects || (isVi ? "Dự án" : "Projects"), href: "#projects", id: "projects" },
-        { name: t.nav?.experience || (isVi ? "Kinh nghiệm" : "Experience"), href: "#experience", id: "experience" },
-        { name: t.nav?.contact || (isVi ? "Liên hệ" : "Contact"), href: "#contact", id: "contact" },
+    const links: { href: string; label: string }[] = [
+        { href: "#about", label: t.nav.about },
+        { href: "#services", label: t.nav.services },
+        { href: "#work", label: t.nav.work },
+        { href: "#process", label: t.nav.process },
     ];
 
     useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
-
-            const sectionIds = ["hero", "about", "skills", "projects", "experience", "contact"];
-            const scrollPosition = window.scrollY + 120;
-
-            for (let i = sectionIds.length - 1; i >= 0; i--) {
-                const el = document.getElementById(sectionIds[i]);
-                if (el) {
-                    const top = el.offsetTop;
-                    if (scrollPosition >= top) {
-                        setActiveSection(sectionIds[i]);
-                        break;
-                    }
-                }
-            }
+        if (!isMenuOpen) return;
+        const closeOnEscape = (event: KeyboardEvent): void => {
+            if (event.key === "Escape") setIsMenuOpen(false);
         };
+        document.addEventListener("keydown", closeOnEscape);
+        return () => document.removeEventListener("keydown", closeOnEscape);
+    }, [isMenuOpen]);
 
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        handleScroll();
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-
-    useEffect(() => {
-        const storedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const resolvedTheme = storedTheme || (prefersDark ? "dark" : "light");
-
-        document.documentElement.setAttribute("data-theme", resolvedTheme);
-        requestAnimationFrame(() => {
-            setTheme(resolvedTheme);
-        });
-    }, []);
-
-    const toggleTheme = () => {
-        const nextTheme = theme === "light" ? "dark" : "light";
-        setTheme(nextTheme);
-        document.documentElement.setAttribute("data-theme", nextTheme);
-        localStorage.setItem("theme", nextTheme);
-    };
-
-    const handleLinkClick = () => {
-        setIsMobileMenuOpen(false);
-    };
+    const closeMenu = (): void => setIsMenuOpen(false);
 
     return (
-        <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md bg-[var(--bg-card)]/80 border-b border-[var(--border-subtle)] ${
-                isScrolled ? "py-3 shadow-xs" : "py-4"
-            }`}
-        >
-            <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-                {/* Brand Logo: "Phạm Văn Sỹ" + subtle tag "AI & Distributed Systems" */}
-                <a
-                    href="#hero"
-                    className="flex items-center gap-3 text-[var(--text-primary)] group cursor-pointer"
-                    onClick={handleLinkClick}
-                >
-                    <div className="relative w-8 h-8 rounded-full overflow-hidden border border-[var(--border-subtle)] bg-[var(--bg-card-hover)] shrink-0">
-                        <Image
-                            src="/profile.webp"
-                            alt={t.hero?.name || "Phạm Văn Sỹ"}
-                            fill
-                            sizes="32px"
-                            className="object-cover object-top"
-                        />
-                    </div>
-                    <div className="flex flex-col text-left">
-                        <span className="font-bold text-sm sm:text-base tracking-tight text-[var(--text-primary)] leading-tight group-hover:opacity-85 transition-opacity">
-                            Phạm Văn Sỹ
+        <>
+            <header className="sticky top-0 z-40 border-b border-line bg-bg/70 backdrop-blur-xl">
+                <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+                    <a href="#top" className="flex items-center gap-2.5 text-[15px] font-semibold tracking-tight">
+                        <span className="grid size-8 place-items-center rounded-lg bg-accent font-mono text-[13px] font-bold text-accent-fg">
+                            SP
                         </span>
-                        <span className="text-[10px] sm:text-[11px] font-mono text-[var(--text-muted)] tracking-tight">
-                            AI & Distributed Systems
-                        </span>
-                    </div>
-                </a>
+                        Sy Pham
+                    </a>
 
-                {/* Desktop Nav Links */}
-                <nav className="hidden md:flex items-center gap-7">
-                    {navLinks.map((link) => {
-                        const isActive = activeSection === link.id;
-                        return (
+                    <nav className="hidden items-center gap-1 md:flex" aria-label={t.nav.primary}>
+                        {links.map((link) => (
                             <a
                                 key={link.href}
                                 href={link.href}
-                                className={`text-sm transition-colors duration-200 relative py-1 cursor-pointer ${
-                                    isActive
-                                        ? "text-[var(--text-primary)] font-semibold"
-                                        : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-medium"
-                                }`}
+                                className="rounded-lg px-3 py-2 text-sm text-fg-2 transition-colors hover:bg-white/5 hover:text-fg"
                             >
-                                {link.name}
-                                {isActive && (
-                                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--text-primary)] rounded-full" />
-                                )}
+                                {link.label}
                             </a>
-                        );
-                    })}
-                </nav>
-
-                {/* Utility Controls & CTA - Desktop */}
-                <div className="hidden md:flex items-center gap-3">
-                    {/* Language Switcher */}
-                    <button
-                        onClick={toggleLanguage}
-                        type="button"
-                        className="btn-pill-secondary !py-1.5 !px-3 text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 cursor-pointer"
-                        aria-label="Toggle language"
-                    >
-                        <FiGlobe className="w-3.5 h-3.5 text-[var(--text-muted)]" aria-hidden="true" />
-                        <span className={language === "en" ? "text-[var(--text-primary)] font-bold" : "text-[var(--text-muted)]"}>
-                            EN
-                        </span>
-                        <span className="text-[var(--text-muted)]">/</span>
-                        <span className={language === "vi" ? "text-[var(--text-primary)] font-bold" : "text-[var(--text-muted)]"}>
-                            VI
-                        </span>
-                    </button>
-
-                    {/* Dark/Light Theme Toggle */}
-                    <button
-                        onClick={toggleTheme}
-                        type="button"
-                        className="btn-pill-secondary !py-1.5 !px-3 text-xs font-semibold flex items-center gap-1.5 cursor-pointer"
-                        aria-label="Toggle theme"
-                    >
-                        {theme === "dark" ? (
-                            <>
-                                <FiSun className="w-3.5 h-3.5 text-amber-400" aria-hidden="true" />
-                                <span className="text-[var(--text-secondary)]">Light</span>
-                            </>
-                        ) : (
-                            <>
-                                <FiMoon className="w-3.5 h-3.5 text-[var(--text-secondary)]" aria-hidden="true" />
-                                <span className="text-[var(--text-secondary)]">Dark</span>
-                            </>
-                        )}
-                    </button>
-
-                    {/* Main CTA Button */}
-                    <a
-                        href="#contact"
-                        className="btn-pill-primary text-xs sm:text-sm !py-1.5 !px-4 cursor-pointer font-semibold ml-1"
-                    >
-                        {t.nav?.contactNow || (isVi ? "Liên hệ ngay" : "Contact Now")}
-                    </a>
-                </div>
-
-                {/* Mobile Controls */}
-                <div className="md:hidden flex items-center gap-2">
-                    {/* Language Toggle Mobile */}
-                    <button
-                        onClick={toggleLanguage}
-                        type="button"
-                        className="btn-pill-secondary !py-1.5 !px-2.5 text-xs font-bold uppercase cursor-pointer"
-                        aria-label="Toggle language"
-                    >
-                        {language === "vi" ? "EN" : "VI"}
-                    </button>
-
-                    {/* Theme Toggle Mobile */}
-                    <button
-                        onClick={toggleTheme}
-                        type="button"
-                        className="btn-pill-secondary !py-1.5 !px-2.5 text-xs font-medium cursor-pointer"
-                        aria-label="Toggle theme"
-                    >
-                        {theme === "dark" ? (
-                            <FiSun className="w-4 h-4 text-amber-400" aria-hidden="true" />
-                        ) : (
-                            <FiMoon className="w-4 h-4 text-[var(--text-secondary)]" aria-hidden="true" />
-                        )}
-                    </button>
-
-                    {/* Menu Drawer Toggle */}
-                    <button
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        type="button"
-                        className="btn-pill-secondary !py-1.5 !px-2.5 text-[var(--text-primary)] cursor-pointer"
-                        aria-label="Toggle menu"
-                    >
-                        {isMobileMenuOpen ? (
-                            <FiX className="w-5 h-5" aria-hidden="true" />
-                        ) : (
-                            <FiMenu className="w-5 h-5" aria-hidden="true" />
-                        )}
-                    </button>
-                </div>
-            </div>
-
-            {/* Mobile Menu Dropdown */}
-            {isMobileMenuOpen && (
-                <div className="md:hidden border-t border-[var(--border-subtle)] bg-[var(--bg-card)]/95 backdrop-blur-md px-6 py-6 mt-3 shadow-xl flex flex-col gap-4">
-                    <nav className="flex flex-col gap-2">
-                        {navLinks.map((link) => {
-                            const isActive = activeSection === link.id;
-                            return (
-                                <a
-                                    key={link.href}
-                                    href={link.href}
-                                    onClick={handleLinkClick}
-                                    className={`text-base font-medium py-2 px-3 rounded-lg transition-colors cursor-pointer ${
-                                        isActive
-                                            ? "bg-[var(--bg-card-hover)] text-[var(--text-primary)] font-semibold"
-                                            : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]/50"
-                                    }`}
-                                >
-                                    {link.name}
-                                </a>
-                            );
-                        })}
+                        ))}
                     </nav>
 
-                    <div className="pt-4 border-t border-[var(--border-subtle)] flex flex-col gap-3">
+                    <div className="flex items-center gap-2">
+                        <div
+                            className="flex h-9 items-center overflow-hidden rounded-lg border border-line font-mono text-sm"
+                            role="group"
+                            aria-label={t.nav.language}
+                        >
+                            {LANGUAGES.map((code) => (
+                                <button
+                                    key={code}
+                                    type="button"
+                                    aria-pressed={language === code}
+                                    onClick={() => setLanguage(code)}
+                                    className={`h-full px-3 uppercase transition-colors ${
+                                        language === code ? "bg-white/10 text-fg" : "text-muted hover:text-fg"
+                                    }`}
+                                >
+                                    {code}
+                                </button>
+                            ))}
+                        </div>
                         <a
                             href="#contact"
-                            onClick={handleLinkClick}
-                            className="btn-pill-primary justify-center text-center text-sm py-2.5 w-full font-semibold cursor-pointer"
+                            className="hidden h-9 items-center gap-1.5 rounded-lg bg-accent px-4 text-sm font-medium text-accent-fg transition-colors hover:bg-accent-hover sm:inline-flex"
                         >
-                            {t.nav?.contactNow || (isVi ? "Liên hệ ngay" : "Contact Now")}
+                            {t.nav.cta}
                         </a>
+                        <button
+                            type="button"
+                            onClick={() => setIsMenuOpen(true)}
+                            aria-label={t.nav.openMenu}
+                            aria-expanded={isMenuOpen}
+                            aria-controls="mobile-menu"
+                            className="grid size-9 place-items-center rounded-lg border border-line text-fg-2 hover:text-fg md:hidden"
+                        >
+                            <LuMenu className="size-[18px]" aria-hidden />
+                        </button>
                     </div>
                 </div>
-            )}
-        </header>
+            </header>
+
+            {/* Mobile menu: drops from the top over a scrim; Esc, scrim click or a link closes it. */}
+            <div
+                className={`fixed inset-0 z-50 bg-black/60 transition-opacity duration-300 md:hidden ${
+                    isMenuOpen ? "opacity-100" : "pointer-events-none opacity-0"
+                }`}
+                onClick={closeMenu}
+                aria-hidden
+            />
+            <div
+                id="mobile-menu"
+                role="dialog"
+                aria-modal="true"
+                aria-label={t.nav.menu}
+                inert={!isMenuOpen}
+                className={`fixed inset-x-0 top-0 z-50 border-b border-line-strong bg-surface-2 px-4 pb-6 pt-4 shadow-[0_24px_48px_-12px_rgb(0_0_0/0.8)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden ${
+                    isMenuOpen ? "translate-y-0" : "-translate-y-full"
+                }`}
+            >
+                <div className="mb-4 flex h-9 items-center justify-between">
+                    <span className="text-sm font-semibold">{t.nav.menu}</span>
+                    <button
+                        type="button"
+                        onClick={closeMenu}
+                        aria-label={t.nav.closeMenu}
+                        className="grid size-9 place-items-center rounded-lg text-fg-2 hover:text-fg"
+                    >
+                        <LuX className="size-[18px]" aria-hidden />
+                    </button>
+                </div>
+                <nav className="grid gap-1 text-base" aria-label={t.nav.primary}>
+                    {links.map((link) => (
+                        <a
+                            key={link.href}
+                            href={link.href}
+                            onClick={closeMenu}
+                            className="rounded-lg px-3 py-3 text-fg-2 hover:bg-white/5 hover:text-fg"
+                        >
+                            {link.label}
+                        </a>
+                    ))}
+                </nav>
+                <a
+                    href="#contact"
+                    onClick={closeMenu}
+                    className="mt-4 flex h-11 items-center justify-center rounded-lg bg-accent text-sm font-medium text-accent-fg"
+                >
+                    {t.nav.cta}
+                </a>
+            </div>
+        </>
     );
 }
