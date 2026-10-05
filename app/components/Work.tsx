@@ -3,6 +3,13 @@
 import { LuArrowUpRight, LuCheck, LuGithub } from "react-icons/lu";
 import { useLanguage } from "../i18n";
 import BlurVideo from "./BlurVideo";
+import type { VideoSource } from "./BlurVideo";
+
+// VP9 first: browsers without an H.264 decoder (Edge on Linux) skip straight to it.
+const BLUR_DEMO_SOURCES: VideoSource[] = [
+    { src: "/Blur_Demo.webm", type: "video/webm" },
+    { src: "/Blur_Demo.mp4", type: "video/mp4" },
+];
 
 const BLUR_REPO_URL = "https://github.com/NeuroDev204/Blur";
 const ECOMMERCE_REPO_URL = "https://github.com/NeuroDev204/Neuro_Ecommerce_Backend";
@@ -91,8 +98,8 @@ export default function Work() {
                             <span className="w-[42px]" />
                         </div>
                         <BlurVideo
-                            src="/Blur_Demo.mp4"
-                            posterLogo="/blur.webp"
+                            sources={BLUR_DEMO_SOURCES}
+                            poster="/blur-demo-poster.webp"
                             pauseLabel={blur.pauseVideo}
                             playLabel={blur.playVideo}
                         />

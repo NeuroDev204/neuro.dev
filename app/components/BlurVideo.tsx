@@ -1,25 +1,35 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { LuPause, LuPlay } from "react-icons/lu";
 
-interface BlurVideoProps {
+export interface VideoSource {
     src: string;
-    posterLogo: string;
+    type: string;
+}
+
+interface BlurVideoProps {
+    /** Ordered by preference; the browser plays the first one it can decode. */
+    sources: VideoSource[];
+    poster: string;
     pauseLabel: string;
     playLabel: string;
 }
 
 /**
- * Muted demo video that plays only while it is on screen, so the 20 MB file is not
+ * Muted demo video that plays only while it is on screen, so the file is not
  * decoding in the background. A visible pause control satisfies WCAG 2.2.2 for
  * auto-playing motion; reduced-motion users get a paused video they can start themselves.
+ *
+ * WebM (VP9) is listed before MP4 (H.264) because some browsers — e.g. Microsoft Edge on
+ * Linux — ship without an H.264 decoder. If no source is playable, the poster stays visible
+ * and the play control is hidden instead of offering a button that does nothing.
  */
-export default function BlurVideo({ src, posterLogo, pauseLabel, playLabel }: BlurVideoProps) {
+export default function BlurVideo({ sources, poster, pauseLabel, playLabel }: BlurVideoProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
     const userPausedRef = useRef<boolean>(false);
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
+    const [isUnplayable, setIsUnplayable] = useState<boolean>(false);
 
     useEffect(() => {
         const video = videoRef.current;
@@ -55,20 +65,16 @@ export default function BlurVideo({ src, posterLogo, pauseLabel, playLabel }: Bl
         }
     };
 
+    const handleLastSourceError = (): void => {
+        console.error("Blur demo: no playable video source in this browser", sources);
+        setIsUnplayable(true);
+    };
+
     return (
         <div className="relative aspect-video bg-surface-2">
-            {/* Shown until the first video frame paints over it. */}
-            <Image
-                src={posterLogo}
-                alt=""
-                aria-hidden
-                width={80}
-                height={80}
-                className="absolute left-1/2 top-1/2 size-20 -translate-x-1/2 -translate-y-1/2 rounded-2xl opacity-70"
-            />
             <video
                 ref={videoRef}
-                src={src}
+                poster={poster}
                 muted
                 loop
                 playsInline
@@ -76,15 +82,27 @@ export default function BlurVideo({ src, posterLogo, pauseLabel, playLabel }: Bl
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
                 className="absolute inset-0 size-full object-cover"
-            />
-            <button
-                type="button"
-                onClick={togglePlayback}
-                aria-label={isPlaying ? pauseLabel : playLabel}
-                className="absolute bottom-3 right-3 grid size-9 place-items-center rounded-full border border-line-strong bg-bg/70 text-fg backdrop-blur transition-colors hover:bg-white/20"
             >
-                {isPlaying ? <LuPause className="size-4" aria-hidden /> : <LuPlay className="size-4" aria-hidden />}
-            </button>
+                {sources.map((source, index) => (
+                    <source
+                        key={source.src}
+                        src={source.src}
+                        type={source.type}
+                        // Only the last source's error means every option failed.
+                        onError={index === sources.length - 1 ? handleLastSourceError : undefined}
+                    />
+                ))}
+            </video>
+            {!isUnplayable && (
+                <button
+                    type="button"
+                    onClick={togglePlayback}
+                    aria-label={isPlaying ? pauseLabel : playLabel}
+                    className="absolute bottom-3 right-3 grid size-9 place-items-center rounded-full border border-line-strong bg-bg/70 text-fg backdrop-blur transition-colors hover:bg-white/20"
+                >
+                    {isPlaying ? <LuPause className="size-4" aria-hidden /> : <LuPlay className="size-4" aria-hidden />}
+                </button>
+            )}
         </div>
     );
 }
